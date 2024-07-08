@@ -22,6 +22,8 @@ const Table = styled.table`
 
 interface EntriesTableProps {
   dictionary: ScrabbleWord[];
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 }
 
 const TableRow = styled.tr`
@@ -56,7 +58,7 @@ const EntriesTable: React.FC<EntriesTableProps> = ({
 }) => {
   const [showDefinition, setShowDefinition] = useState(false);
   const [word, setWord] = useState('');
-  const [definition, setDefinition] = useState([]);
+  const [definition, setDefinition] = useState<string[]>([]);
 
   const entriesPerPage = 10;
 
@@ -82,7 +84,7 @@ const EntriesTable: React.FC<EntriesTableProps> = ({
               key={index}
               onClick={() => {
                 setWord(entry.form);
-                setDefinition(entry.sense);
+                setDefinition(entry.sense as string[]);
                 setShowDefinition(true);
                 console.log(showDefinition);
               }}

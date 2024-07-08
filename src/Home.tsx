@@ -117,17 +117,16 @@ export default function Home() {
         wordLength={wordLength}
         setWordLength={handleLengthChange}
         handleSetContains={handleSetContains}
-        contains={contains}
         handleFilterToggle={handleFilterToggle}
       />
       <main style={{ display: 'flex', justifyContent: 'center' }}>
         {scrabbleInput.length === 1 || sortedWords.length === 0 ? (
           <div style={{ marginTop: '2rem' }}>
-            {wordLength < contains?.length ? (
+            {Number(wordLength) < Number(contains?.length) ? (
               <p>
                 Burtu virkne "{contains}" ir garāka par {wordLength}
               </p>
-            ) : contains?.length > 0 && !sortedWords?.length ? (
+            ) : Number(contains?.length) > 0 && !sortedWords?.length ? (
               <>
                 <p>Pamēģini kaut ko citu...</p>
               </>

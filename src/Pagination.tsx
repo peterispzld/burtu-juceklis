@@ -194,7 +194,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           <PaginationItem
             key={pageNumber}
             selected={pageNumber === currentPage}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => onPageChange(pageNumber as number)}
           >
             {pageNumber}
           </PaginationItem>

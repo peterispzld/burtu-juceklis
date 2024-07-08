@@ -82,9 +82,7 @@ export default function DefinitionDialog({
           <OrderedList>
             {definition.map((sense) => {
               if (sense.toString().includes('Object')) {
-                console.log('oops', sense[0]);
-
-                return <li>{sense[0].ref[0]._}</li>;
+                return <li>{(sense[0] as any).ref[0]._}</li>;
               }
               return <li>{sense.toString()}</li>;
             })}
@@ -93,7 +91,7 @@ export default function DefinitionDialog({
           <br />
         </Definition>
         <form method="dialog">
-          <ShareButton word={word} handleShareClick={handleShareClick} />
+          <ShareButton handleShareClick={handleShareClick} />
           <OkButton
             onClick={() => setShowDefinition(false)}
             style={{ float: 'right' }}

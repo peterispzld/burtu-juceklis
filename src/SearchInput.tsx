@@ -17,10 +17,11 @@ const NumberInput = styled.input`
 `;
 
 type SearchInputProps = {
-  wordLength?: number;
-  setWordLength: (length: number) => void;
+  wordLength?: string;
+  setWordLength: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetContains: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFilterToggle: () => void;
 };
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -28,7 +29,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
   setWordLength,
   handleInputChange,
   handleSetContains,
-  contains,
   handleFilterToggle,
 }) => {
   const [isToggled, setIsToggled] = useState(false);

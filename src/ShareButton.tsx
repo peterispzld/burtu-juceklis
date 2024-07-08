@@ -2,7 +2,11 @@ import { OkButton } from './DefinitionDialog';
 import twitterSvg from './assets/x-twitter.svg';
 
 // ShareButton Component
-const ShareButton = ({ word, handleShareClick }) => {
+const ShareButton = ({
+  handleShareClick,
+}: {
+  handleShareClick: () => void;
+}) => {
   return (
     <OkButton
       onClick={handleShareClick}
