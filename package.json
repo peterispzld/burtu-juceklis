@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "NODE_OPTIONS=--max_old_space_size=32000 npm run build",
     "deploy": "NODE_OPTIONS=--max_old_space_size=32000 gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
