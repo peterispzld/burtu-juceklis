@@ -43,6 +43,8 @@ export default function Home() {
   const [scrabbleWordFinder, setScrabbleWordFinder] =
     useState<ScrabbleWordFinder>();
 
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     axios
       .get(
@@ -52,6 +54,7 @@ export default function Home() {
         setInitialScrabbleWords(res.data);
         setScrabbleWordFinder(new ScrabbleWordFinder(res.data));
         setScrabbleWords(res.data);
+        setLoaded(true);
       });
   }, []);
 
@@ -131,7 +134,11 @@ export default function Home() {
         handleFilterToggle={handleFilterToggle}
       />
       <main style={{ display: 'flex', justifyContent: 'center' }}>
-        {scrabbleInput.length === 1 || scrabbleWords.length === 0 ? (
+        {!loaded ? (
+          <div style={{ marginTop: '2rem' }}>
+            <LoadingSpinner />
+          </div>
+        ) : scrabbleInput.length === 1 || scrabbleWords.length === 0 ? (
           <div style={{ marginTop: '2rem' }}>
             {Number(wordLength) < Number(contains?.length) ? (
               <p>

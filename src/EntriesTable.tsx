@@ -88,7 +88,6 @@ const EntriesTable: React.FC<EntriesTableProps> = ({
                 setWord(entry.form);
                 setDefinition(entry.sense as string[]);
                 setShowDefinition(true);
-                console.log(showDefinition);
               }}
               style={{ cursor: 'pointer' }}
             >

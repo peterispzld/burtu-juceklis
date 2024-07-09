@@ -80,11 +80,11 @@ export default function DefinitionDialog({
         </p>
         <Definition>
           <OrderedList>
-            {definition.map((sense) => {
+            {definition.map((sense, i) => {
               if (sense.toString().includes('Object')) {
-                return <li>{(sense[0] as any).ref[0]._}</li>;
+                return <li key={i}>{(sense[0] as any).ref[0]._}</li>;
               }
-              return <li>{sense.toString()}</li>;
+              return <li key={i}>{sense.toString()}</li>;
             })}
           </OrderedList>
           <br />
