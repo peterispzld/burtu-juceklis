@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import EntriesTable from './EntriesTable';
 import LoadingSpinner from './LoadingSpinner';
 import SearchInput from './SearchInput';
-import dictionary from './dictionary-setup/scrabbleWords.json';
 import ScrabbleWordFinder, { Word } from './helpers/scrabbleWordFinder';
-
-const scrabbleWordFinder = new ScrabbleWordFinder(dictionary as Word[]);
 
 const StyledHeading = styled.h1`
   font-size: 3rem;
@@ -40,9 +38,22 @@ const StyledSubtitle = styled.p`
 `;
 
 export default function Home() {
-  const [scrabbleWords, setScrabbleWords] = useState<Word[]>(
-    dictionary as Word[],
-  );
+  const [initialScrabbleWords, setInitialScrabbleWords] = useState<Word[]>([]);
+  const [scrabbleWords, setScrabbleWords] = useState<Word[]>([]);
+  const [scrabbleWordFinder, setScrabbleWordFinder] =
+    useState<ScrabbleWordFinder>();
+
+  useEffect(() => {
+    axios
+      .get(
+        'https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/scrabbleWords.json',
+      )
+      .then((res) => {
+        setInitialScrabbleWords(res.data);
+        setScrabbleWordFinder(new ScrabbleWordFinder(res.data));
+        setScrabbleWords(res.data);
+      });
+  }, []);
 
   const [scrabbleInput, setScrabbleInput] = useState('');
   const [wordLength, setWordLength] = useState<string>();
@@ -55,7 +66,7 @@ export default function Home() {
     setWordLength(undefined);
     setContains(undefined);
     setScrabbleInput('');
-    setScrabbleWords(dictionary as Word[]);
+    setScrabbleWords(initialScrabbleWords);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,10 +74,11 @@ export default function Home() {
     setScrabbleInput(input);
     setCurrentPage(1);
     if (input === '') {
-      setScrabbleWords(dictionary as Word[]);
+      setScrabbleWords(initialScrabbleWords);
     } else {
-      const matchedWords = scrabbleWordFinder.find(input);
-      setScrabbleWords(matchedWords);
+      const matchedWords = scrabbleWordFinder?.find(input);
+
+      setScrabbleWords(matchedWords || []);
     }
   };
 
@@ -76,15 +88,15 @@ export default function Home() {
     setCurrentPage(1);
     if (!length) {
       if (!contains) {
-        setScrabbleWords(dictionary as Word[]);
+        setScrabbleWords(initialScrabbleWords);
       } else {
-        const filteredWords = (dictionary as Word[]).filter((word) => {
+        const filteredWords = initialScrabbleWords.filter((word) => {
           return word.form.includes(contains);
         });
         setScrabbleWords(filteredWords);
       }
     } else {
-      const filteredWords = (dictionary as Word[]).filter((word) => {
+      const filteredWords = initialScrabbleWords.filter((word) => {
         if (!contains) return word.form.length === parseInt(length);
         return (
           word.form.includes(contains) && word.form.length === parseInt(length)
@@ -98,7 +110,7 @@ export default function Home() {
     const input = event.target.value.toLowerCase();
     setContains(input);
     setCurrentPage(1);
-    const filteredWords = (dictionary as Word[]).filter((word) => {
+    const filteredWords = initialScrabbleWords.filter((word) => {
       if (!wordLength) return word.form.includes(input);
       return (
         word.form.length === parseInt(wordLength) && word.form.includes(input)
@@ -107,7 +119,6 @@ export default function Home() {
     setScrabbleWords(filteredWords);
   };
 
-  const sortedWords = scrabbleWords.sort((a, b) => b.value - a.value);
   return (
     <>
       <StyledHeading>Burtu Juceklis</StyledHeading>
@@ -120,13 +131,13 @@ export default function Home() {
         handleFilterToggle={handleFilterToggle}
       />
       <main style={{ display: 'flex', justifyContent: 'center' }}>
-        {scrabbleInput.length === 1 || sortedWords.length === 0 ? (
+        {scrabbleInput.length === 1 || scrabbleWords.length === 0 ? (
           <div style={{ marginTop: '2rem' }}>
             {Number(wordLength) < Number(contains?.length) ? (
               <p>
                 Burtu virkne "{contains}" ir garāka par {wordLength}
               </p>
-            ) : Number(contains?.length) > 0 && !sortedWords?.length ? (
+            ) : Number(contains?.length) > 0 && !scrabbleWords?.length ? (
               <>
                 <p>Pamēģini kaut ko citu...</p>
               </>
@@ -139,7 +150,7 @@ export default function Home() {
           </div>
         ) : (
           <EntriesTable
-            dictionary={sortedWords}
+            dictionary={scrabbleWords}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />

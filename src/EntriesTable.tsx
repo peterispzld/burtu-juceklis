@@ -65,7 +65,9 @@ const EntriesTable: React.FC<EntriesTableProps> = ({
   const indexOfLastEntry = currentPage * entriesPerPage;
   const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
 
-  const entries = dictionary.slice(indexOfFirstEntry, indexOfLastEntry);
+  const entries = dictionary
+    .sort((a, b) => b.value - a.value)
+    .slice(indexOfFirstEntry, indexOfLastEntry);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
   return (
