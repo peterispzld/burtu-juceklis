@@ -10,8 +10,10 @@ const StyledHeading = styled.h1`
   font-size: 3rem;
   text-align: center;
   text-decoration: underline;
-  color: #222;
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.1em;
   text-decoration-color: #a4343a;
+  color: #222;
   margin-bottom: 0;
   font-weight: 900;
   margin-top: 1rem;
