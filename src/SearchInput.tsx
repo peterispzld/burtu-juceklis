@@ -31,7 +31,7 @@ const NumberInput = styled.input`
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: 40px;
+  width: 60px;
   &:focus {
     outline: none;
   }
@@ -77,7 +77,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
         </>
       ) : (
         <TextInput
-          // style={{ width: '100%' }}
           type="text"
           onChange={handleInputChange}
           placeholder="jekclius"
