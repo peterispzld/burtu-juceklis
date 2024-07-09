@@ -66,7 +66,7 @@ function App() {
     <PageContainer>
       <header>
         <Navbar>
-          <Link to="/burtu-juceklis">
+          <Link to="/">
             <img
               src={logo}
               alt="logo"
@@ -79,7 +79,7 @@ function App() {
             />
           </Link>
           <LinksContainer>
-            <StyledLink to="/burtu-juceklis">Sākums</StyledLink>
+            <StyledLink to="/">Sākums</StyledLink>
             <StyledLink to="/par">Par</StyledLink>
             <StyledLink to="/kontakti">Kontakti</StyledLink>
           </LinksContainer>
@@ -87,7 +87,7 @@ function App() {
       </header>
       <ContentContainer>
         <Routes>
-          <Route path="/burtu-juceklis" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/par" element={<About />} />
           <Route path="/kontakti" element={<Contacts />} />
         </Routes>
