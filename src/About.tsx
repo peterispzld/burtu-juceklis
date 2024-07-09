@@ -12,10 +12,11 @@ export const AboutContainer = styled.div`
   line-height: 1.5;
   max-width: 700px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 
   @media (max-width: 480px) {
-    padding: 1rem 2rem 1rem;
+    padding: 0 1rem 1rem 1rem;
+    /* padding: 1rem 2rem 1rem; */
   }
 `;
 
@@ -78,8 +79,8 @@ const About: React.FC = () => {
           licenci.
         </Paragraph>
         <Paragraph>
-          Ja novērtējat šo lietotni un/vai vēlaties atbalstīt tās turpmāku
-          attīstību, lūdzu, apsveriet iespēju{' '}
+          Ja novērtējat šo lietotni un vēlaties atbalstīt manu darbu, lūdzu,
+          apsveriet iespēju{' '}
           <a
             href="https://buymeacoffee.com/peterispzld
 "

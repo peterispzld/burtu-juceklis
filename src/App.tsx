@@ -18,10 +18,10 @@ const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 
   @media (max-width: 480px) {
-    padding: 2rem 2rem 1rem;
+    padding: 2rem 1rem 1rem;
   }
 `;
 

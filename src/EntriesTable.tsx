@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 800px;
   margin-top: 1rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
   overflow-x: auto;
 `;
 

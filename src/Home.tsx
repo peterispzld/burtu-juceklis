@@ -16,7 +16,7 @@ const StyledHeading = styled.h1`
   font-weight: 900;
   margin-top: 1rem;
 
-  padding: 0 2rem;
+  padding: 0 1rem;
 
   @media (max-width: 480px) {
     margin-top: 0;
