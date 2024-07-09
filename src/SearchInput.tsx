@@ -7,11 +7,8 @@ interface ContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
-  /* max-width: 700px; */
   margin: 0 2rem;
-  display: grid;
-  grid-template-columns: ${(props) =>
-    props.$isToggled ? '50px 1fr 42px' : '1fr 42px'};
+  display: flex;
   gap: 10px;
 `;
 
@@ -71,7 +68,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           </>
         ) : (
           <TextInput
-            style={{ maxWidth: 50 + 10 + 194 }}
+            // style={{ maxWidth: 43 + 10 + 194 }}
             type="text"
             onChange={handleInputChange}
             placeholder="jekclius"
