@@ -212,7 +212,7 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
   height: 40px;
   animation: ${Kv} 0.8s linear infinite;
 `,ef=()=>x.jsx(Gv,{children:x.jsx(Jv,{})}),Yv=$.button`
-  width: 42px;
+  width: 100%;
   background-color: inherit;
   border: none;
   border-radius: 5px;
