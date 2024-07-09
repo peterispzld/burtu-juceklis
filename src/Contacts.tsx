@@ -48,8 +48,8 @@ const Contacts: React.FC = () => {
       <Paragraph>
         Ja tev ir kādi jautājumi, ieteikumi vai atsauksmes, droši dod ziņu,
         rakstot uz e-pastu{' '}
-        <a href="mailto:peteris.dev@gmail.com" style={{ color: '#a4343a' }}>
-          peteris.dev@gmail.com
+        <a href="mailto:peterispzld@gmail.com" style={{ color: '#a4343a' }}>
+          peterispzld@gmail.com
         </a>
         .
       </Paragraph>
