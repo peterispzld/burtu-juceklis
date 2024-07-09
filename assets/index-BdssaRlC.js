@@ -220,7 +220,7 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
   /* max-width: 700px; */
   margin: 0 2rem;
   display: grid;
-  grid-template-columns: ${e=>e.$isToggled?"50px 1fr 50px":"1fr 50px"};
+  grid-template-columns: ${e=>e.$isToggled?"50px 1fr 42px":"1fr 42px"};
   gap: 10px;
 `,tf=$.input`
   padding: 0.5rem;
