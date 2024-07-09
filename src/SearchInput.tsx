@@ -11,7 +11,7 @@ const Container = styled.div<ContainerProps>`
   margin: 0 2rem;
   display: grid;
   grid-template-columns: ${(props) =>
-    props.$isToggled ? '50px 1fr 50px' : '1fr 50px'};
+    props.$isToggled ? '50px 1fr 42px' : '1fr 42px'};
   gap: 10px;
 `;
 
