@@ -237,7 +237,7 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: 40px;
+  width: 60px;
   &:focus {
     outline: none;
   }
