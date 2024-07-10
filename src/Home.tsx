@@ -6,6 +6,12 @@ import LoadingSpinner from './LoadingSpinner';
 import SearchInput from './SearchInput';
 import ScrabbleWordFinder, { Word } from './helpers/scrabbleWordFinder';
 
+const urls = [
+  'https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/split/part1.json',
+  'https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/split/part2.json',
+  'https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/split/part3.json',
+];
+
 const StyledHeading = styled.h1`
   font-size: 3rem;
   text-align: center;
@@ -48,15 +54,17 @@ export default function Home() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/scrabbleWords.json',
-      )
-      .then((res) => {
-        setInitialScrabbleWords(res.data);
-        setScrabbleWordFinder(new ScrabbleWordFinder(res.data));
-        setScrabbleWords(res.data);
+    Promise.all(urls.map((url) => axios.get(url)))
+      .then((responses) => {
+        const combinedData = responses.flatMap((response) => response.data);
+
+        setInitialScrabbleWords(combinedData);
+        setScrabbleWordFinder(new ScrabbleWordFinder(combinedData));
+        setScrabbleWords(combinedData);
         setLoaded(true);
+      })
+      .catch((error) => {
+        console.error('Error fetching the JSON files:', error);
       });
   }, []);
 
