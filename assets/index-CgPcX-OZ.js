@@ -241,7 +241,7 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
   &:focus {
     outline: none;
   }
-`,tw=({wordLength:e,setWordLength:t,handleInputChange:n,handleSetContains:r,handleFilterToggle:o})=>{const[i,l]=R.useState(!1),s=()=>{o(),l(!i)};return x.jsxs(bv,{$isToggled:i,children:[i?x.jsxs(x.Fragment,{children:[x.jsx(ew,{type:"number",min:"2",max:"15",value:e,onChange:t,placeholder:"2"}),x.jsx(tf,{type:"text",onChange:r,placeholder:"nieks"})]}):x.jsx(tf,{type:"text",onChange:n,placeholder:"jekclius"}),x.jsx(Zv,{isToggled:i,handleClick:s})]})};class nf{constructor(){this.children=Object.create(null)}}class nw{constructor(t){this.root=new nf,t.forEach(n=>this.insert(n))}insert(t){let n=this.root;for(let r of t.form.toLowerCase())n.children[r]||(n.children[r]=new nf),n=n.children[r];n.isWord=!0,n.value=t.value,n.sense=t.sense,n.form=t.form}}class rw{constructor(t){this.dict=new nw(t)}find(t){return this.validWords(this.dict.root,t)}validWords(t,n,r="",o=[]){t.isWord&&o.push({form:t.form,sense:t.sense,value:t.value});const i=new Set;for(let l of n)i.has(l)||(i.add(l),t.children[l]&&this.validWords(t.children[l],n.replace(l,""),r+l,o));return o}}const ow=$.h1`
+`,tw=({wordLength:e,setWordLength:t,handleInputChange:n,handleSetContains:r,handleFilterToggle:o})=>{const[i,l]=R.useState(!1),s=()=>{o(),l(!i)};return x.jsxs(bv,{$isToggled:i,children:[i?x.jsxs(x.Fragment,{children:[x.jsx(ew,{type:"number",min:"2",max:"15",value:e,onChange:t,placeholder:"2"}),x.jsx(tf,{type:"text",onChange:r,placeholder:"nieks"})]}):x.jsx(tf,{type:"text",onChange:n,placeholder:"jekclius"}),x.jsx(Zv,{isToggled:i,handleClick:s})]})};class nf{constructor(){this.children=Object.create(null)}}class nw{constructor(t){this.root=new nf,t.forEach(n=>this.insert(n))}insert(t){let n=this.root;for(let r of t.form.toLowerCase())n.children[r]||(n.children[r]=new nf),n=n.children[r];n.isWord=!0,n.value=t.value,n.sense=t.sense,n.form=t.form}}class rw{constructor(t){this.dict=new nw(t)}find(t){return this.validWords(this.dict.root,t)}validWords(t,n,r="",o=[]){t.isWord&&o.push({form:t.form,sense:t.sense,value:t.value});const i=new Set;for(let l of n)i.has(l)||(i.add(l),t.children[l]&&this.validWords(t.children[l],n.replace(l,""),r+l,o));return o}}const ow=["https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/split/part1.json","https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/split/part2.json","https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/split/part3.json"],iw=$.h1`
   font-size: 3rem;
   text-align: center;
   text-decoration: underline;
@@ -259,7 +259,7 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
     margin-top: 0;
     font-size: 2.8rem;
   }
-`,iw=$.p`
+`,lw=$.p`
   text-align: center;
   font-size: 1.4rem;
   color: #666;
@@ -270,13 +270,13 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
   @media (max-width: 480px) {
     font-size: 1.3rem;
   }
-`;function lw(){const[e,t]=R.useState([]),[n,r]=R.useState([]),[o,i]=R.useState(),[l,s]=R.useState(!1);R.useEffect(()=>{re.get("https://raw.githubusercontent.com/peteriscaurs/latvian-scrabble-word-list/main/scrabbleWords.json").then(w=>{t(w.data),i(new rw(w.data)),r(w.data),s(!0)})},[]);const[u,a]=R.useState(""),[c,f]=R.useState(),[m,v]=R.useState(),[g,y]=R.useState(1),P=()=>{y(1),f(void 0),v(void 0),a(""),r(e)},h=w=>{const E=w.target.value.toLowerCase();if(a(E),y(1),E==="")r(e);else{const C=o==null?void 0:o.find(E);r(C||[])}},d=w=>{const E=w.target.value;if(f(E),y(1),E){const C=e.filter(k=>m?k.form.includes(m)&&k.form.length===parseInt(E):k.form.length===parseInt(E));r(C)}else if(!m)r(e);else{const C=e.filter(k=>k.form.includes(m));r(C)}},p=w=>{const E=w.target.value.toLowerCase();v(E),y(1);const C=e.filter(k=>c?k.form.length===parseInt(c)&&k.form.includes(E):k.form.includes(E));r(C)};return x.jsxs(x.Fragment,{children:[x.jsx(ow,{children:"Burtu Juceklis"}),x.jsx(iw,{children:"Latviešu Scrabble vārdu meklētājs"}),x.jsx(tw,{handleInputChange:h,wordLength:c,setWordLength:d,handleSetContains:p,handleFilterToggle:P}),x.jsx("main",{style:{display:"flex",justifyContent:"center"},children:l?u.length===1||n.length===0?x.jsx("div",{style:{marginTop:"2rem"},children:Number(c)<Number(m==null?void 0:m.length)?x.jsxs("p",{children:['Burtu virkne "',m,'" ir garāka par ',c]}):Number(m==null?void 0:m.length)>0&&!(n!=null&&n.length)?x.jsx(x.Fragment,{children:x.jsx("p",{children:"Pamēģini kaut ko citu..."})}):x.jsxs(x.Fragment,{children:[x.jsx(ef,{}),x.jsx("p",{children:"Gaidu vēl burtus..."})]})}):x.jsx(Qv,{dictionary:n,currentPage:g,setCurrentPage:y}):x.jsx("div",{style:{marginTop:"2rem"},children:x.jsx(ef,{})})})]})}const sw="/burtu-juceklis/assets/android-chrome-192x192-Bk95DR1d.png",uw="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3e%3c!--!Font%20Awesome%20Free%206.5.2%20by%20@fontawesome%20-%20https://fontawesome.com%20License%20-%20https://fontawesome.com/license/free%20Copyright%202024%20Fonticons,%20Inc.--%3e%3cpath%20d='M47.6%20300.4L228.3%20469.1c7.5%207%2017.4%2010.9%2027.7%2010.9s20.2-3.9%2027.7-10.9L464.4%20300.4c30.4-28.3%2047.6-68%2047.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347%2036.5%20300.6%2051.4%20268%2084L256%2096%20244%2084c-32.6-32.6-79-47.5-124.6-39.9C50.5%2055.6%200%20115.2%200%20185.1v5.8c0%2041.5%2017.2%2081.2%2047.6%20109.5z'%20fill='%23a4343ac0'/%3e%3c/svg%3e",Wl=$(Zu)`
+`;function sw(){const[e,t]=R.useState([]),[n,r]=R.useState([]),[o,i]=R.useState(),[l,s]=R.useState(!1);R.useEffect(()=>{Promise.all(ow.map(w=>re.get(w))).then(w=>{const E=w.flatMap(C=>C.data);t(E),i(new rw(E)),r(E),s(!0)}).catch(w=>{console.error("Error fetching the JSON files:",w)})},[]);const[u,a]=R.useState(""),[c,f]=R.useState(),[m,v]=R.useState(),[g,y]=R.useState(1),P=()=>{y(1),f(void 0),v(void 0),a(""),r(e)},h=w=>{const E=w.target.value.toLowerCase();if(a(E),y(1),E==="")r(e);else{const C=o==null?void 0:o.find(E);r(C||[])}},d=w=>{const E=w.target.value;if(f(E),y(1),E){const C=e.filter(k=>m?k.form.includes(m)&&k.form.length===parseInt(E):k.form.length===parseInt(E));r(C)}else if(!m)r(e);else{const C=e.filter(k=>k.form.includes(m));r(C)}},p=w=>{const E=w.target.value.toLowerCase();v(E),y(1);const C=e.filter(k=>c?k.form.length===parseInt(c)&&k.form.includes(E):k.form.includes(E));r(C)};return x.jsxs(x.Fragment,{children:[x.jsx(iw,{children:"Burtu Juceklis"}),x.jsx(lw,{children:"Latviešu Scrabble vārdu meklētājs"}),x.jsx(tw,{handleInputChange:h,wordLength:c,setWordLength:d,handleSetContains:p,handleFilterToggle:P}),x.jsx("main",{style:{display:"flex",justifyContent:"center"},children:l?u.length===1||n.length===0?x.jsx("div",{style:{marginTop:"2rem"},children:Number(c)<Number(m==null?void 0:m.length)?x.jsxs("p",{children:['Burtu virkne "',m,'" ir garāka par ',c]}):Number(m==null?void 0:m.length)>0&&!(n!=null&&n.length)?x.jsx(x.Fragment,{children:x.jsx("p",{children:"Pamēģini kaut ko citu..."})}):x.jsxs(x.Fragment,{children:[x.jsx(ef,{}),x.jsx("p",{children:"Gaidu vēl burtus..."})]})}):x.jsx(Qv,{dictionary:n,currentPage:g,setCurrentPage:y}):x.jsx("div",{style:{marginTop:"2rem"},children:x.jsx(ef,{})})})]})}const uw="/burtu-juceklis/assets/android-chrome-192x192-Bk95DR1d.png",aw="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3e%3c!--!Font%20Awesome%20Free%206.5.2%20by%20@fontawesome%20-%20https://fontawesome.com%20License%20-%20https://fontawesome.com/license/free%20Copyright%202024%20Fonticons,%20Inc.--%3e%3cpath%20d='M47.6%20300.4L228.3%20469.1c7.5%207%2017.4%2010.9%2027.7%2010.9s20.2-3.9%2027.7-10.9L464.4%20300.4c30.4-28.3%2047.6-68%2047.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347%2036.5%20300.6%2051.4%20268%2084L256%2096%20244%2084c-32.6-32.6-79-47.5-124.6-39.9C50.5%2055.6%200%20115.2%200%20185.1v5.8c0%2041.5%2017.2%2081.2%2047.6%20109.5z'%20fill='%23a4343ac0'/%3e%3c/svg%3e",Wl=$(Zu)`
   text-decoration: none;
   color: #222;
   &:hover {
     text-decoration: underline;
   }
-`,aw=$.nav`
+`,cw=$.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -285,20 +285,20 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
   @media (max-width: 480px) {
     padding: 2rem 1rem 1rem;
   }
-`,cw=$.div`
+`,fw=$.div`
   display: flex;
   gap: 32px;
 
   @media (max-width: 332px) {
     gap: 16px;
   }
-`,fw=$.div`
+`,dw=$.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-`,dw=$.div`
+`,pw=$.div`
   flex-grow: 1;
-`,pw=$.footer`
+`,hw=$.footer`
   position: sticky;
   bottom: 0;
   width: 100%;
@@ -313,4 +313,4 @@ Latviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-jucekl
     padding: 0.5rem;
     font-size: small;
   }
-`;function hw(){return x.jsxs(fw,{children:[x.jsx("header",{children:x.jsxs(aw,{children:[x.jsx(Zu,{to:"/",children:x.jsx("img",{src:sw,alt:"logo",style:{width:64,height:64,objectFit:"contain",paddingRight:"1rem"}})}),x.jsxs(cw,{children:[x.jsx(Wl,{to:"/",children:"Sākums"}),x.jsx(Wl,{to:"/par",children:"Par"}),x.jsx(Wl,{to:"/kontakti",children:"Kontakti"})]})]})}),x.jsx(dw,{children:x.jsxs(Hg,{children:[x.jsx(Vo,{path:"/",element:x.jsx(lw,{})}),x.jsx(Vo,{path:"/par",element:x.jsx(ey,{})}),x.jsx(Vo,{path:"/kontakti",element:x.jsx(oy,{})})]})}),x.jsxs(pw,{children:["Made with"," ",x.jsx("img",{src:uw,alt:"love",width:16,style:{margin:"0 6px"}})," ","by Pēteris"]})]})}Vl.createRoot(document.getElementById("root")).render(x.jsx(Yg,{basename:"/burtu-juceklis",children:x.jsx(an.StrictMode,{children:x.jsx(hw,{})})}));
+`;function mw(){return x.jsxs(dw,{children:[x.jsx("header",{children:x.jsxs(cw,{children:[x.jsx(Zu,{to:"/",children:x.jsx("img",{src:uw,alt:"logo",style:{width:64,height:64,objectFit:"contain",paddingRight:"1rem"}})}),x.jsxs(fw,{children:[x.jsx(Wl,{to:"/",children:"Sākums"}),x.jsx(Wl,{to:"/par",children:"Par"}),x.jsx(Wl,{to:"/kontakti",children:"Kontakti"})]})]})}),x.jsx(pw,{children:x.jsxs(Hg,{children:[x.jsx(Vo,{path:"/",element:x.jsx(sw,{})}),x.jsx(Vo,{path:"/par",element:x.jsx(ey,{})}),x.jsx(Vo,{path:"/kontakti",element:x.jsx(oy,{})})]})}),x.jsxs(hw,{children:["Made with"," ",x.jsx("img",{src:aw,alt:"love",width:16,style:{margin:"0 6px"}})," ","by Pēteris"]})]})}Vl.createRoot(document.getElementById("root")).render(x.jsx(Yg,{basename:"/burtu-juceklis",children:x.jsx(an.StrictMode,{children:x.jsx(mw,{})})}));
