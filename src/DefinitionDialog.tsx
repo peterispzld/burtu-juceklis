@@ -55,12 +55,12 @@ export default function DefinitionDialog({
   word: string;
   definition: string[];
 }) {
-  const tweetText = `Re, kādu es vārdu atradu: ${word} 😎\n\nLatviešu Scrabble vardu meklētājs: https://peterispzld.github.io/burtu-juceklis/`;
-  const encodedTweetText = encodeURIComponent(tweetText);
-  const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodedTweetText}`;
+  const postText = `Nupat atradu "${word}" Latviešu Scrabble vardu meklētājā: https://peterispzld.github.io/burtu-juceklis/ #Scrabble`;
+  const encodedPostText = encodeURIComponent(postText);
+  const blueskyShareUrl = `https://bsky.app/intent/compose?text=${encodedPostText}`;
 
   const handleShareClick = () => {
-    window.open(twitterShareUrl, '_blank', 'noopener,noreferrer');
+    window.open(blueskyShareUrl, '_blank', 'noopener,noreferrer');
     setShowDefinition(false);
   };
 

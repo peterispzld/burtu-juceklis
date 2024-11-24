@@ -1,5 +1,5 @@
 import { OkButton } from './DefinitionDialog';
-import twitterSvg from './assets/x-twitter.svg';
+import blueskySvg from './assets/bluesky-brands-solid.svg';
 
 // ShareButton Component
 const ShareButton = ({
@@ -13,7 +13,7 @@ const ShareButton = ({
       style={{ backgroundColor: '#fafafa', color: 'inherit' }}
     >
       <div style={{ display: 'flex', gap: 8 }}>
-        Dalīties <img src={twitterSvg} alt="Twitter" width={16} />
+        Dalīties <img src={blueskySvg} alt="Bluesky" width={16} />
       </div>
     </OkButton>
   );
