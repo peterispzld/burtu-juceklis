@@ -55,12 +55,12 @@ export default function DefinitionDialog({
   word: string;
   definition: string[];
 }) {
-  const postText = `Nupat atradu "${word}" Latviešu Scrabble vardu meklētājā: https://peterispzld.github.io/burtu-juceklis/ #Scrabble`;
+  const postText = `Nupat atradu "${word}" Latviešu Scrabble vārdu meklētājā: https://peterispzld.github.io/burtu-juceklis/`;
   const encodedPostText = encodeURIComponent(postText);
-  const blueskyShareUrl = `https://bsky.app/intent/compose?text=${encodedPostText}`;
+  const threadsShareUrl = `https://www.threads.net/intent/post?text=${encodedPostText}`;
 
   const handleShareClick = () => {
-    window.open(blueskyShareUrl, '_blank', 'noopener,noreferrer');
+    window.open(threadsShareUrl, '_blank', 'noopener,noreferrer');
     setShowDefinition(false);
   };
 
